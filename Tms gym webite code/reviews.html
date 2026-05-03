@@ -1,0 +1,234 @@
+<!-- FILE: reviews.html (fully functional with fake reviews pre-loaded) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TMS | Member Reviews</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="header-flex">
+    <div class="logo-area">
+      <img class="logo-image" src="tmsgymlogo-darkbackground.png" alt="TMS Logo">
+      <div class="brand">
+        <h1>TOTAL MUSCLE SANCTUARY</h1>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="membership.html">MEMBERSHIP</a></li>
+        <li><a href="tutors.html">PRIVATE TUTORS</a></li>
+        <li><a href="classes.html">CLASSES</a></li>
+        <li><a href="food.html">MENU</a></li>
+        <li><a href="history.html">HISTORY</a></li>
+        <li><a href="reviews.html" style="color:#d9262c;">REVIEWS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h2 class="page-title">MEMBER REVIEWS</h2>
+  <p>Real experiences from our community. Share yours below.</p>
+
+  <div class="two-columns">
+    <!-- Review submission form -->
+    <div class="review-form">
+      <h3 style="margin-bottom: 1rem;">Write a Review</h3>
+      <form id="reviewForm">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="reviewerName" placeholder="e.g., Alex Johnson" required>
+        </div>
+        <div class="form-group">
+          <label>Rating</label>
+          <div class="star-rating">
+            <input type="radio" name="rating" value="5" id="star5"><label for="star5">★</label>
+            <input type="radio" name="rating" value="4" id="star4"><label for="star4">★</label>
+            <input type="radio" name="rating" value="3" id="star3"><label for="star3">★</label>
+            <input type="radio" name="rating" value="2" id="star2"><label for="star2">★</label>
+            <input type="radio" name="rating" value="1" id="star1"><label for="star1">★</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Your Review</label>
+          <textarea id="reviewComment" rows="4" placeholder="Tell us about your experience..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">SUBMIT REVIEW</button>
+      </form>
+    </div>
+
+    <!-- List of reviews -->
+    <div class="review-list">
+      <h3 style="margin-bottom: 1rem;">What members say (4.8  average)</h3>
+      <div id="reviewsContainer">
+        <!-- Reviews will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>TMS – Total Muscle Sanctuary | Real reviews from real athletes</p>
+</footer>
+
+<script>
+  // Load reviews from localStorage
+  let reviews = [];
+
+  function loadReviews() {
+    const stored = localStorage.getItem('tms_reviews');
+    if (stored) {
+      reviews = JSON.parse(stored);
+    } else {
+      // ---------- FAKE REVIEWS (pre-loaded, realistic) ----------
+      reviews = [
+        {
+          name: "Marcus Lee",
+          rating: 5,
+          comment: "The swimming pool is insane! Clean, warm, and never too crowded. The free meal with Inferno membership is a game changer – saved me a fortune.",
+          date: "2025-04-15"
+        },
+        {
+          name: "Sophia Chen",
+          rating: 4,
+          comment: "Great atmosphere, excellent trainers. Only downside is it's a bit pricey, but you get what you pay for. The yoga classes with Sienna are next level.",
+          date: "2025-04-10"
+        },
+        {
+          name: "James O'Connor",
+          rating: 5,
+          comment: "Joined for the powerlifting section, stayed for the community. Drake Thorne helped me add 40kg to my deadlift in 3 months. Worth every penny.",
+          date: "2025-04-05"
+        },
+        {
+          name: "Layla Hassan",
+          rating: 5,
+          comment: "The cafeteria is underrated. The free meal (I have Titan membership) is actually delicious – the salmon on Fridays is 10/10. Also the red/black vibe is motivational.",
+          date: "2025-03-28"
+        },
+        {
+          name: "Tyler Brooks",
+          rating: 4,
+          comment: "Classes are well structured, but booking can be tricky during peak hours. Still, the swimming medley class is fantastic. Would recommend.",
+          date: "2025-03-20"
+        },
+        {
+          name: "Nina Kovac",
+          rating: 5,
+          comment: "Best decision I made this year. Recovered from a knee injury with the help of their physio and pool. Staff genuinely care.",
+          date: "2025-03-15"
+        },
+        {
+          name: "Carlos Mendez",
+          rating: 5,
+          comment: "Private tutoring with Zara Madden improved my freestyle technique drastically. She's patient and knows her stuff. Expensive but worth it.",
+          date: "2025-03-10"
+        },
+        {
+          name: "Emily Walsh",
+          rating: 4,
+          comment: "The only thing missing is a sauna (they have one now actually!). Great gym, clean equipment, and the HIIT classes are brutal in a good way.",
+          date: "2025-03-05"
+        }
+      ];
+      saveReviews();
+    }
+    displayReviews();
+  }
+
+  function saveReviews() {
+    localStorage.setItem('tms_reviews', JSON.stringify(reviews));
+  }
+
+  function displayReviews() {
+    const container = document.getElementById('reviewsContainer');
+    if (!reviews.length) {
+      container.innerHTML = '<div class="empty-message">No reviews yet. Be the first to write one!</div>';
+      return;
+    }
+    container.innerHTML = '';
+    // Optional: sort by date (newest first) – they are already unshifted when added, but initial order is as above.
+    reviews.slice().reverse().forEach((review, idx) => {
+      // use original index for delete, but careful with reverse. Better to use unique id, but simple reversed display works.
+      const actualIndex = reviews.length - 1 - idx;
+      const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+      const reviewDiv = document.createElement('div');
+      reviewDiv.className = 'review-card';
+      reviewDiv.innerHTML = `
+        <div class="review-header">
+          <span class="review-name">${escapeHtml(review.name)}</span>
+          <span class="review-rating">${stars}</span>
+          <span class="review-date">${review.date}</span>
+          <button class="delete-btn" data-index="${actualIndex}">✖ Delete</button>
+        </div>
+        <div class="review-comment">${escapeHtml(review.comment)}</div>
+      `;
+      container.appendChild(reviewDiv);
+    });
+    // Attach delete event listeners
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = parseInt(btn.getAttribute('data-index'));
+        reviews.splice(idx, 1);
+        saveReviews();
+        displayReviews();
+      });
+    });
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+      return c;
+    });
+  }
+
+  function addReview(name, rating, comment) {
+    const today = new Date().toISOString().slice(0, 10);
+    reviews.unshift({
+      name: name.trim(),
+      rating: parseInt(rating),
+      comment: comment.trim(),
+      date: today
+    });
+    saveReviews();
+    displayReviews();
+  }
+
+  // Handle form submission
+  document.getElementById('reviewForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('reviewerName').value.trim();
+    const ratingInput = document.querySelector('input[name="rating"]:checked');
+    const comment = document.getElementById('reviewComment').value.trim();
+    if (!name) {
+      alert('Please enter your name.');
+      return;
+    }
+    if (!ratingInput) {
+      alert('Please select a star rating.');
+      return;
+    }
+    if (!comment) {
+      alert('Please write your review.');
+      return;
+    }
+    const rating = ratingInput.value;
+    addReview(name, rating, comment);
+    // Reset form
+    document.getElementById('reviewForm').reset();
+    alert('Thank you for your review!');
+  });
+
+  loadReviews();
+</script>
+</body>
+</html>

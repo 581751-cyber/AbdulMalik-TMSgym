@@ -1,0 +1,748 @@
+<!-- FILE: index.html (Professional Homepage) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>TMS | Total Muscle Sanctuary – Premium Gym</title>
+  <style>
+    /* ===== RESET & GLOBAL ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0a0a;
+      font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Arial', sans-serif;
+      color: #e0e0e0;
+      line-height: 1.5;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+    /* ===== HEADER & NAV ===== */
+    header {
+      background: #000000dd;
+      backdrop-filter: blur(4px);
+      border-bottom: 2px solid #c52a2a;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.8rem 2rem;
+    }
+
+    .header-flex {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    /* BIGGER LOGO (enhanced) */
+    .logo-image {
+      height: 85px;
+      width: auto;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+      transition: transform 0.2s ease;
+    }
+
+    .logo-image:hover {
+      transform: scale(1.02);
+    }
+
+    .brand h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      background: linear-gradient(135deg, #ffffff, #e0e0e0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.2rem;
+    }
+
+    .brand p {
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      color: #c52a2a;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #f0f0f0;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      transition: 0.2s;
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav ul li a:hover, nav ul li a.active {
+      border-bottom-color: #c52a2a;
+      color: #ff4d4d;
+    }
+
+    /* ===== HERO SECTION WITH BACKGROUND IMAGE ===== */
+    .hero-full {
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), 
+                  url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1600') no-repeat center center/cover;
+      background-size: cover;
+      background-position: center 30%;
+      min-height: 550px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-bottom: 4px solid #c52a2a;
+    }
+
+    .hero-overlay {
+      width: 100%;
+      padding: 3rem 1rem;
+    }
+
+    .hero-content h2 {
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 4px 4px 12px black;
+      background: linear-gradient(135deg, #fff, #d4af37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 5px black;
+      color: #f2f2f2;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 40px;
+      transition: 0.2s;
+      display: inline-block;
+      font-size: 1rem;
+    }
+
+    .btn-large {
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      background: #c52a2a;
+      color: white;
+      border: none;
+      box-shadow: 0 4px 12px rgba(197, 42, 42, 0.4);
+    }
+
+    .btn:hover {
+      background: #a11f1f;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #c52a2a;
+      color: #ffffff;
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: #c52a2a;
+      color: white;
+      border-color: #c52a2a;
+    }
+
+    /* stats row */
+    .stats-bar {
+      background: #111111;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      padding: 2rem 1rem;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #c52a2a;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* container and grid */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .section-title p {
+      color: #aaa;
+      font-size: 1rem;
+    }
+
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .feature-card {
+      background: #151515;
+      border-radius: 20px;
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 1.8rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 300px;
+      border: 1px solid #2c2c2c;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: #c52a2a;
+      box-shadow: 0 12px 28px rgba(197,42,42,0.2);
+    }
+
+    .feature-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .feature-card h3 {
+      margin: 1rem 0 0.5rem;
+      color: #c52a2a;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .feature-card p {
+      padding: 0 1rem;
+      color: #cfcfcf;
+      font-size: 0.9rem;
+    }
+
+    /* USP Banner */
+    .usp-banner {
+      background: linear-gradient(95deg, #1e0a0a, #2b0b0b);
+      border-top: 2px solid #c52a2a;
+      border-bottom: 2px solid #c52a2a;
+      padding: 2rem 1rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .usp-content h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #ff5e5e;
+    }
+
+    .usp-content p {
+      font-size: 1.1rem;
+      margin: 0.8rem 0;
+    }
+
+    .btn-small {
+      display: inline-block;
+      background: #c52a2a;
+      padding: 0.6rem 1.3rem;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      transition: 0.2s;
+    }
+
+    .btn-small:hover {
+      background: #9e1f1f;
+    }
+
+    /* two column layout */
+    .two-col-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem auto;
+      justify-content: center;
+    }
+
+    .testimonial {
+      flex: 1;
+      background: #121212;
+      padding: 2rem;
+      border-left: 6px solid #c52a2a;
+      border-radius: 20px;
+      font-style: italic;
+      font-size: 1.15rem;
+    }
+
+    .testimonial span {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #c52a2a;
+    }
+
+    .challenge-box {
+      flex: 1;
+      background: #121212;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      background: linear-gradient(145deg, #181818, #0e0e0e);
+      border: 1px solid #2c2c2c;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .challenge-box:hover {
+      border-color: #c52a2a;
+      box-shadow: 0 0 12px rgba(197,42,42,0.3);
+    }
+
+    .challenge-box h3 {
+      color: #c52a2a;
+      margin-bottom: 0.8rem;
+      font-size: 1.6rem;
+    }
+
+    .reward-badge {
+      background: #c52a2a;
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    /* EASTER EGG MODAL / TOAST */
+    .easter-egg-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      background: linear-gradient(135deg, #1f1f1f, #000000);
+      border-left: 6px solid #ffd700;
+      border-right: 6px solid #c52a2a;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      color: #ffefc0;
+      font-weight: 600;
+      font-size: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.2s ease;
+      pointer-events: none;
+      font-family: monospace;
+      letter-spacing: 0.5px;
+    }
+
+    .easter-egg-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+      pointer-events: none;
+    }
+
+    .easter-egg-toast span {
+      font-size: 1.7rem;
+    }
+
+    .easter-highlight {
+      color: #ffd966;
+      font-weight: 800;
+      background: #2a0e0e;
+      padding: 2px 8px;
+      border-radius: 30px;
+      margin-left: 6px;
+    }
+
+    /* secret clicked badge */
+    .secret-unlocked {
+      animation: pulse 0.5s ease;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); text-shadow: 0 0 0px gold;}
+      50% { transform: scale(1.02); text-shadow: 0 0 8px #ffaa33;}
+      100% { transform: scale(1); text-shadow: 0 0 0px transparent;}
+    }
+
+    footer {
+      background: #030303;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    footer .footer-small {
+      font-size: 0.7rem;
+      color: #777;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 850px) {
+      .header-flex {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-content h2 {
+        font-size: 2.4rem;
+      }
+      .hero-tagline {
+        font-size: 1rem;
+      }
+      .logo-area {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 550px) {
+      nav ul {
+        justify-content: center;
+        gap: 1rem;
+      }
+      .features-grid {
+        gap: 1rem;
+      }
+      .stat-number {
+        font-size: 1.6rem;
+      }
+      .hero-full {
+        min-height: 450px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-flex">
+    <div class="logo-area">
+      <!-- Logo now significantly BIGGER -->
+      <img class="logo-image" src="tmsgymlogo-darkbackground.png" alt="TMS Logo" 
+           onerror="this.onerror=null; this.src='https://placehold.co/600x300/1a1a1a/red?text=TMS+LOGO';">
+      <div class="brand">
+        <h1>TOTAL MUSCLE SANCTUARY</h1>
+        <p>red code | iron devotion | premium recovery</p>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">HOME</a></li>
+        <li><a href="membership.html">MEMBERSHIP</a></li>
+        <li><a href="tutors.html">PRIVATE TUTORS</a></li>
+        <li><a href="classes.html">CLASSES</a></li>
+        <li><a href="food.html">MENU</a></li>
+        <li><a href="history.html">HISTORY</a></li>
+        <li><a href="reviews.html">REVIEWS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section with background image -->
+  <section class="hero-full">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h2>SCULPT YOUR LEGACY</h2>
+        <p class="hero-tagline">Elite training • Olympic pool • Chef‑curated meals</p>
+        <div class="hero-buttons">
+          <a href="membership.html" class="btn btn-large">BECOME A MEMBER</a>
+          <a href="classes.html" class="btn btn-outline btn-large">VIEW TIMETABLE</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats / Quick Facts -->
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat-number">500+</span>
+      <span class="stat-label">Active Members</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">12+</span>
+      <span class="stat-label">Expert Coaches</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">25m</span>
+      <span class="stat-label">Olympic Pool</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">FREE</span>
+      <span class="stat-label">Daily Meal*</span>
+    </div>
+  </div>
+
+  <!-- Features Grid -->
+  <div class="container">
+    <div class="section-title">
+      <h2>Why Choose TMS?</h2>
+      <p>More than a gym – a sanctuary for champions</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <img src="swimmingpool.png" alt="Olympic pool" 
+             onerror="this.src='https://placehold.co/600x400/333/red?text=Pool+Area'">
+        <h3>OLYMPIC POOL</h3>
+        <p>Indoor 25m lap pool, hydro massage & recovery zone.</p>
+      </div>
+      <div class="feature-card">
+        <img src="canteen.jpg" alt="Performance kitchen"
+             onerror="this.src='https://placehold.co/600x400/333/red?text=Kitchen'">
+        <h3>PERFORMANCE KITCHEN</h3>
+        <p>Premium members get 1 free meal daily. High‑protein macros.</p>
+      </div>
+      <div class="feature-card">
+        <img src="elitetrainers.png" alt="Elite trainers"
+             onerror="this.src='https://placehold.co/600x400/333/red?text=Elite+Trainers'">
+        <h3>ELITE TRAINERS</h3>
+        <p>Private tutors for strength, swimming, yoga & cardio.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- USP Banner (Free Meal Highlight) -->
+  <div class="usp-banner">
+    <div class="usp-content">
+      <h3>🔥 INFERNO & TITAN MEMBERS 🔥</h3>
+      <p>Enjoy a <strong>FREE high‑protein meal</strong> every single day at our Performance Kitchen.</p>
+      <a href="membership.html" class="btn-small">Upgrade now →</a>
+    </div>
+  </div>
+
+  <!-- Testimonial + Weekly Challenge (CHALLENGE BOX is now an EASTER EGG TRIGGER) -->
+  <div class="container two-col-layout">
+    <div class="testimonial">
+      <p>“TMS changed my life — from the pool to the weights, red & black atmosphere pushes me daily.”</p>
+      <span>— Axel R., Titan Member</span>
+    </div>
+    <!-- EASTER EGG ZONE: Click the challenge box to unlock 50% OFF first month -->
+    <div class="challenge-box" id="easterEggZone">
+      <h3>🏆 WEEKLY CHALLENGE</h3>
+      <p>Track your attendance and earn protein vouchers. Ask reception about the <strong>“Leviathan challenge”</strong>.</p>
+      <div class="reward-badge">💪 Win up to £50 credit</div>
+      <!-- subtle hint (whisper easter egg vibe) -->
+      <div style="font-size: 0.7rem; margin-top: 12px; opacity: 0.5; letter-spacing: 0.5px;">click anywhere on this card → hidden power</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>TMS – Total Muscle Sanctuary | est. 2020 · Red & Black Standard</p>
+  <p class="footer-small">*Free daily meal applies to Inferno and Titan memberships only.</p>
+</footer>
+
+<!-- Easter Egg Toast Notification Element -->
+<div id="easterToast" class="easter-egg-toast">
+  <span>⚡</span>
+  <div>
+    🎁 <strong>SECRET UNLOCKED!</strong> 🎁<br>
+    Your first month <span style="color:#ffaa44;">50% OFF</span> — use code: <strong class="easter-highlight">TMS-REDEMPTION</strong> at checkout!
+  </div>
+</div>
+
+<script>
+  (function() {
+    // EASTER EGG: Click on the "Weekly Challenge" box (easterEggZone) triggers a one-time 50% off reveal.
+    // It shows a stylish toast message and stores flag so it won't spam, but you can click multiple times but effect already shown.
+    let eggUnlocked = false;
+    const eggZone = document.getElementById('easterEggZone');
+    const toastEl = document.getElementById('easterToast');
+    
+    // function to show toast with nice animation
+    function showEasterEggReward() {
+      if (eggUnlocked) {
+        // If already unlocked, we still show a small reminder but not annoying - but we can show a different subtle toast?
+        // To keep it friendly, just show a little flash but not override? We'll do a second reminder but don't duplicate huge.
+        // But per request: "if you click that part you get your first month 50 percent off" — we give the discount code.
+        // Even after multiple clicks, we just remind the user about the offer (without being intrusive).
+        const existingReminder = document.querySelector('.reminder-toast');
+        if(!existingReminder) {
+          const reminder = document.createElement('div');
+          reminder.className = 'easter-egg-toast show';
+          reminder.style.bottom = '90px';
+          reminder.innerHTML = '<span>🔁</span><div>🔥 Code still active: <strong class="easter-highlight">TMS-REDEMPTION</strong> for 50% OFF first month! 🔥</div>';
+          document.body.appendChild(reminder);
+          setTimeout(() => {
+            reminder.classList.remove('show');
+            setTimeout(() => reminder.remove(), 500);
+          }, 2800);
+        }
+        return;
+      }
+      
+      // First time unlock
+      eggUnlocked = true;
+      
+      // add a cool pulse animation on the challenge box to celebrate
+      eggZone.classList.add('secret-unlocked');
+      setTimeout(() => {
+        eggZone.classList.remove('secret-unlocked');
+      }, 600);
+      
+      // Show the fancy toast
+      toastEl.classList.add('show');
+      
+      // Additionally we can simulate discount code copied to clipboard? not necessary but adds fun.
+      // Also trigger a tiny confetti effect? subtle: just show fancy style.
+      
+      // auto-hide toast after 5 seconds
+      setTimeout(() => {
+        toastEl.classList.remove('show');
+      }, 5000);
+      
+      // Optional: store in localStorage so if page reloads, the easter egg effect persists?
+      // but we want people to still get the code? I'll store that they already triggered, but code still works.
+      // But we don't want to lose chance — but they can still use the code even if reloaded, since we set localStorage and the toast shows again?
+      // Better: save flag so that on page reload, if previously unlocked, we can show a small passive note?
+      // Actually nice UX: if user reloads page, they still see a little reminder on the same box? Let's implement localStorage friendly.
+      localStorage.setItem('tms_egg_unlocked', 'true');
+      
+      // Also change the badge inside challenge box (extra flavor)
+      const rewardDiv = eggZone.querySelector('.reward-badge');
+      if(rewardDiv && !rewardDiv.innerHTML.includes('50% OFF')) {
+        const originalHTML = rewardDiv.innerHTML;
+        rewardDiv.innerHTML = '🎉 50% OFF FIRST MONTH ACTIVE 🎉';
+        rewardDiv.style.background = '#d4af37';
+        rewardDiv.style.color = '#1f1f1f';
+        rewardDiv.style.fontWeight = 'bold';
+        // Reset after 8 sec? maybe keep as easter egg signature, but not permanent reset? we want positive sign.
+        setTimeout(() => {
+          if(rewardDiv.innerHTML.includes('50% OFF FIRST MONTH ACTIVE')) {
+            rewardDiv.innerHTML = originalHTML;
+            rewardDiv.style.background = '#c52a2a';
+            rewardDiv.style.color = '';
+          }
+        }, 7000);
+      }
+    }
+    
+    // If there's a previously unlocked easter egg from a prior session, we show a subtle banner when page loads reminding the user of the offer
+    // but without spoiling the click? It's a friendly reminder but still works. Actually we want them to still have the code on revisit.
+    // But the easter egg click is the main discoverable. However for loyalty: if they had unlocked before, we show a small passive message on the card.
+    function checkPreviousUnlock() {
+      const prev = localStorage.getItem('tms_egg_unlocked');
+      if(prev === 'true') {
+        // user already discovered the easter egg before. We'll add a gentle reminder on the challenge card that the discount code still applies.
+        const existingFlag = document.getElementById('permReminder');
+        if(!existingFlag && eggZone) {
+          const permHint = document.createElement('div');
+          permHint.id = 'permReminder';
+          permHint.style.marginTop = '8px';
+          permHint.style.fontSize = '0.7rem';
+          permHint.style.color = '#ffaa66';
+          permHint.style.background = '#2a1a1a';
+          permHint.style.padding = '4px 8px';
+          permHint.style.borderRadius = '40px';
+          permHint.style.display = 'inline-block';
+          permHint.innerHTML = '✨ Code TMS-REDEMPTION (50% off) still available ✨';
+          eggZone.appendChild(permHint);
+          // mark flag that we already added reminder
+          localStorage.setItem('reminder_shown', 'true');
+        }
+        eggUnlocked = true; // so future clicks don't double fire big toast but they get a reminder.
+      }
+    }
+    
+    if(eggZone) {
+      eggZone.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showEasterEggReward();
+      });
+    }
+    
+    checkPreviousUnlock();
+    
+    // If toast element exists and user clicks away nothing else needed.
+    // Also add a small effect to the logo? just for joy — not needed.
+    // Add optional secondary fun: double clicking the logo area triggers a console message (just for fun)
+    const logoImg = document.querySelector('.logo-image');
+    if(logoImg) {
+      let clickCount = 0;
+      logoImg.addEventListener('dblclick', () => {
+        console.log('%c🔥 TMS SECRET: TMS-REDEMPTION = 50%% off first month 🔥', 'color: #ffaa44; font-size: 14px; font-weight: bold;');
+        // minor easter egg console output only.
+      });
+    }
+  })();
+</script>
+</body>
+</html>

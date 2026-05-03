@@ -1,0 +1,108 @@
+<!-- FILE: membership-booking.html (signup page with personal details) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TMS | Membership Signup</title>
+</head>
+<body>
+<header>
+  <div class="header-flex">
+    <div class="logo-area"><div class="logo-placeholder">TMS</div><div class="brand"><h1>TOTAL MUSCLE SANCTUARY</h1></div></div>
+    <nav><ul><li><a href="index.html">HOME</a></li><li><a href="membership.html">MEMBERSHIP</a></li><li><a href="tutors.html">PRIVATE TUTORS</a></li><li><a href="classes.html">CLASSES</a></li><li><a href="food.html">MENU</a></li><li><a href="history.html">HISTORY</a></li><li><a href="reviews.html">REVIEWS</a></li></ul></nav>
+  </div>
+</header>
+<link rel="stylesheet" href="style.css">
+<main class="container">
+  <div class="signup-card">
+    <h2 style="color: var(--primary-red); margin-bottom: 0.5rem;">COMPLETE YOUR MEMBERSHIP</h2>
+    <p>Fill in your details to activate your plan.</p>
+
+    <div class="plan-details" id="planDetails">
+      <p>Loading plan information...</p>
+    </div>
+
+    <form id="membershipForm">
+      <div class="form-group">
+        <label>First Name *</label>
+        <input type="text" id="firstName" required placeholder="e.g., John">
+      </div>
+      <div class="form-group">
+        <label>Surname *</label>
+        <input type="text" id="surname" required placeholder="e.g., Doe">
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="email" required placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>Phone Number (optional)</label>
+        <input type="tel" id="phone" placeholder="+44 1234 567890">
+      </div>
+      <div class="form-group">
+        <label>Preferred Payment Method</label>
+        <select id="paymentMethod">
+          <option value="Credit Card">Credit Card</option>
+          <option value="Debit Card">Debit Card</option>
+          <option value="PayPal">PayPal</option>
+          <option value="Bank Transfer">Bank Transfer</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-submit">ACTIVATE MEMBERSHIP</button>
+      <a href="membership.html" class="btn-back" style="display: block; text-align: center;">← Back to Plans</a>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <p>TMS – Total Muscle Sanctuary | Join the elite</p>
+</footer>
+
+<script>
+  // Get URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const plan = urlParams.get('plan') || 'Not specified';
+  const price = urlParams.get('price') || '0';
+  const features = urlParams.get('features') || 'No features listed';
+  const freeMeal = urlParams.get('freeMeal') || 'no';
+
+  // Format features nicely (replace commas with line breaks)
+  const featuresFormatted = decodeURIComponent(features).replace(/,/g, ', ');
+
+  // Display plan details
+  const detailsDiv = document.getElementById('planDetails');
+  let mealText = '';
+  if (freeMeal === 'yes') mealText = '<p style="color:#ffc285;">🍽️ INCLUDES: 1 FREE MEAL PER DAY</p>';
+  else if (freeMeal === '2perday') mealText = '<p style="color:#ffc285;">🍽️ INCLUDES: 2 FREE MEALS PER DAY</p>';
+  detailsDiv.innerHTML = `
+    <p><strong>🏷️ Plan:</strong> ${decodeURIComponent(plan)}</p>
+    <p><strong>💰 Price:</strong> £${price} / month</p>
+    <p><strong>✨ Features:</strong> ${featuresFormatted}</p>
+    ${mealText}
+    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #ffc285;">No contract – cancel anytime. First payment due today.</p>
+  `;
+
+  // Handle form submission
+  document.getElementById('membershipForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const firstName = document.getElementById('firstName').value.trim();
+    const surname = document.getElementById('surname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const paymentMethod = document.getElementById('paymentMethod').value;
+
+    if (!firstName || !surname || !email) {
+      alert('Please fill in your first name, surname, and email address.');
+      return;
+    }
+
+    const fullName = firstName + ' ' + surname;
+    alert(`✅ Membership activated for ${fullName}!\n\nPlan: ${decodeURIComponent(plan)}\nPrice: £${price}/month\nPayment method: ${paymentMethod}\n\nA confirmation email has been sent to ${email}. Welcome to TMS!`);
+
+    // Optional: redirect back to membership page after a short delay
+    window.location.href = 'membership.html';
+  });
+</script>
+</body>
+</html>
